@@ -1,0 +1,160 @@
+public class Login_Caixa{
+  public String nome;
+  public int id;
+
+//Construtor com parametros
+  public Login_Caixa (String nome, int id){
+    this.nome = nome;
+    this.id = id;
+  }
+
+//Metodo para exibir informações
+  public void logado(){
+    System.out.println("Caixa aberto com sucesso, Bem vindo " + this.nome + "!");
+  }
+
+}
+____________________________________________________________________________________________________________
+public class Dados_Cliente{
+public String cpf_Cliente;;
+
+
+//Construtor com parametros
+  public Dados_Cliente(String cpf) {
+    this.cpf_Cliente = cpf_Cliente;
+  }
+//Metodo para exibir informações
+  public void Cliente_Cadastrado(){
+    System.out.println("Cliente Inserido");
+  }
+}
+__________________________________________________________________________________________________________________
+public class Registro_Compra{
+  public String codigo_produto; 
+  public double valor_produto;
+  public int quantidade_produto = 0;
+  public double valor_total = 0;
+
+  //Construtor com parametros
+  public Registro_Compra(String codigo_produto, double valor_produto, int quantidade_produto, double valor_total){
+    this.codigo_produto = codigo_produto;
+    this.valor_produto = valor_produto;
+    this.quantidade_produto = quantidade_produto;
+    this.valor_total = valor_total;
+  }
+
+  //Metodo para exibir informações
+  public void Total_Compra(){
+    System.out.println("Valor Total da Compra: " + this.valor_total);
+  }
+  
+}
+_________________________________________________________________________________________________________________
+import java.util.Scanner;
+import java.util.Random;
+
+public class Formas_Pagamento {
+Scanner sc = new Scanner(System.in);
+  Random rand = new Random();
+  
+  public String cartao;
+  public String dinheiro;
+  public String pix;
+
+public void Pagamentos(){
+  System.out.println("Selecione a forma de pagamento: ");
+  System.out.println("1 - Cartão");
+  System.out.println("2 - Dinheiro");
+  System.out.println("3 - Pix");
+  System.out.println("4 - Cancelar");
+
+  int opcao = sc.nextInt();
+  
+  switch(opcao){
+    case 1: 
+      System.out.println("Pagamento em CARTÃO selecionado.");
+      System.out.println("Informe o número do cartão: ");
+      String numero_cartao = sc.next();
+      System.out.println("Informe o código de segurança: ");
+      String codigo_seguranca = sc.next();
+      System.out.println("Pagamento realizado com sucesso!");
+      break;
+
+    case 2:
+      System.out.println("Pagamento em DINHEIRO selecionado.");
+      System.out.println("Informe o valor dado pelo cliente: ");
+      double valor = sc.nextDouble();
+      System.out.println("Pagamento realizado com sucesso!");
+      break;
+
+
+    case 3:
+      System.out.println("Pagamento em PIX selecionado.");
+      System.out.println("Código para pagamento: ");
+      int numero_aleatorio = rand.nextInt(9999);
+      System.out.println(numero_aleatorio);
+      System.out.println("Pagamento realizado com sucesso!");
+      break;
+      
+    case 4:
+      System.out.println("Pagamento cancelado.");
+      break;
+
+    default: 
+      System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+        
+  }
+  
+}
+  
+}
+__________________________________________________________________________________________________
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+
+    //Login
+    System.out.println("Informe seu nome: ");
+    String nome = sc.nextLine();
+    System.out.println("Informe seu ID: ");
+    int id = sc.nextInt();
+    Login_Caixa L = new Login_Caixa(nome, id);
+    L.logado();
+
+    //Dados cliente 
+    System.out.println("_________________________");
+    System.out.println("Informe CPF do Cliente: ");
+    String cpf_Cliente = sc.next();
+    Dados_Cliente D = new Dados_Cliente(cpf_Cliente);
+    D.Cliente_Cadastrado();
+
+    //Registro de compra
+    String codigo_produto = "";
+    double valor_produto = 0;
+    int quantidade_produto = 0;
+    double valor_total = 0;
+    
+    do{
+    System.out.println("_________________________");
+    System.out.println("Informe o código do produto: (0 para finalizar)");
+    codigo_produto = sc.next();
+      if (codigo_produto.equals("0"))
+        break;
+    System.out.println("Informe o valor do produto: ");
+    valor_produto = sc.nextDouble();
+    System.out.println("Informe a quantidade do produto: ");
+    quantidade_produto = sc.nextInt();
+    valor_total = valor_total + (valor_produto * quantidade_produto);
+    }while (true);
+    Registro_Compra R = new Registro_Compra (codigo_produto, valor_produto, quantidade_produto, valor_total);
+    R.Total_Compra();
+
+    //Pagamento
+    System.out.println("_________________________");
+    Formas_Pagamento F = new Formas_Pagamento();
+    F.Pagamentos();
+  }
+}
