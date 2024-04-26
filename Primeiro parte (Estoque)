@@ -38,7 +38,7 @@ public void Cadastrar_Estoque(){
   System.out.println("Produto cadastrado com sucesso!");
   System.out.println ("Informações do Produtos ");
   System.out.println("Nome do Produto: " + this.Nome_Produto);
-  System.out.println("Descrição do Produto: " + this.Descricao_Produto);
+  System.out.println("Código do Produto: " + this.Descricao_Produto);
   System.out.println("Quantidade disponível do Produto: " + this.Quantidade_Produto);
   System.out.println("Valor do Produto: " + this.Valor_Produto);
   System.out.println("Localização do Produto: " + this.Localizacao_Produto); 
@@ -73,7 +73,7 @@ Scanner sc = new Scanner(System.in);
     String Nome_Produto = sc.next();
       if (Nome_Produto.equals(Fim_Estoque))
       break;
-    System.out.println("Informe a descrição do produto: ");
+    System.out.println("Informe o código do produto: ");
     String Descricao_Produto = sc.next();
     System.out.println("Informe a quantidade do produto: ");
     int Quantidade_Produto = sc.nextInt();
