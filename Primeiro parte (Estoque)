@@ -1,0 +1,93 @@
+public class Login{
+  public String nome;
+  public int id;
+
+//Construtor com parametros
+  public Login (String nome, int id){
+    this.nome = nome;
+    this.id = id;
+  }
+
+//Metodo para exibir informações
+  public void logado(){
+    System.out.println("Logado com sucesso, bem vindo " + this.nome + "!");
+  }
+  
+}
+
+________________________________________________________________________________________________________________________________________________________
+
+public class Estoque {
+public String Nome_Produto; 
+public String Descricao_Produto;
+public int Quantidade_Produto;
+public double Valor_Produto;
+public String Localizacao_Produto;
+
+//Construtor com parametros
+public Estoque (String Nome_Produto, String Descricao_Produto, int Quantidade_Produto, double Valor_Produto, String Localizacao_Produto){
+  this.Nome_Produto = Nome_Produto;
+  this.Descricao_Produto = Descricao_Produto;
+  this.Quantidade_Produto = Quantidade_Produto;
+  this.Valor_Produto = Valor_Produto;
+  this.Localizacao_Produto = Localizacao_Produto;
+}
+
+//Metodo para exibir informações
+public void Cadastrar_Estoque(){
+  System.out.println("Produto cadastrado com sucesso!");
+  System.out.println ("Informações do Produtos ");
+  System.out.println("Nome do Produto: " + this.Nome_Produto);
+  System.out.println("Descrição do Produto: " + this.Descricao_Produto);
+  System.out.println("Quantidade disponível do Produto: " + this.Quantidade_Produto);
+  System.out.println("Valor do Produto: " + this.Valor_Produto);
+  System.out.println("Localização do Produto: " + this.Localizacao_Produto); 
+}
+  
+}
+________________________________________________________________________________________________________________________________________
+import java.util.Scanner;
+
+
+public class Main {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+
+    
+    //Login
+    System.out.println("Informe seu nome: ");
+    String nome = sc.nextLine();
+    System.out.println("Informe seu ID: ");
+    int id = sc.nextInt();
+    Login L = new Login(nome, id);
+    L.logado();
+
+    //Estoque
+    String Fim_Estoque = "000";
+
+    System.out.println("__________________ ");
+    System.out.println("CADASTRAMENTO DE ESTOQUE (DIGITE 000 PARA ENCERRAR)");
+    //Repetição para cadastrar produtos
+    do{ 
+    System.out.println("Informe o nome do produto: ");
+    String Nome_Produto = sc.next();
+      if (Nome_Produto.equals(Fim_Estoque))
+      break;
+    System.out.println("Informe a descrição do produto: ");
+    String Descricao_Produto = sc.next();
+    System.out.println("Informe a quantidade do produto: ");
+    int Quantidade_Produto = sc.nextInt();
+    System.out.println("Informe o valor do produto: ");
+    double Valor_Produto = sc.nextDouble();
+    System.out.println("Informe a localização do produto: ");
+    String Localizacao_Produto = sc.next();
+    Estoque E = new Estoque (Nome_Produto, Descricao_Produto, Quantidade_Produto, Valor_Produto, Localizacao_Produto);
+    E.Cadastrar_Estoque();
+    } while (true);
+    //Fim Reperição para cadastrar produtos
+    
+    System.out.println("FIM DO CADASTRAMENTO DE ESTOQUE");
+    
+      }
+  }
+    
